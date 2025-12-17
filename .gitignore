@@ -1,0 +1,19 @@
+# Arquivos temporários do LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# PDF compilado (opcional)
+# pdf/
+
+# Sistema
+.DS_Store
+
