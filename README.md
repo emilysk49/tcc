@@ -5,7 +5,7 @@ pela Universidade Federal de Santa Catarina.
 
 ## 📄 Sobre o trabalho
 - Autora: Emily Sayuri Kiba
-- Orientador(a): Aldo von Wangenheim
+- Orientador: Prof. Dr. Aldo von Wangenheim
 - Instituição: UFSC
 - Ano: 2025
 
@@ -20,5 +20,8 @@ pela Universidade Federal de Santa Catarina.
 Este trabalho investiga a aplicação de Inteligência Artificial gerativa, em especial o Stable Diffusion, na modelagem 3D e sua integração no contexto de jogos.
 O foco é a criação de um manual prático que demonstra o uso da IA tanto para a geração de conceitos visuais quanto para a criação de malhas e texturas tridimensionais, visando agilizar e tornar o processo de modelagem mais acessível.
 
-## 🎮 Demonstração do Jogo
+## 🎮 Lógica do Jogo
+![Logica do jogo](imagens/logica_jogo.png)
+
+### ▶️ Demonstração do Jogo
 [![Demonstração do Jogo](https://img.youtube.com/vi/f3wWPZTIt18/0.jpg)](https://www.youtube.com/watch?v=f3wWPZTIt18)
