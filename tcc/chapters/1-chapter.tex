@@ -1,0 +1,100 @@
+% ----------------------------------------------------------
+\chapter{Introdução}
+% ----------------------------------------------------------
+
+Atualmente, a modelagem tridimensional (3D) desempenha um papel fundamental nas indústrias de entretenimento, como animação, cinema, jogos e realidade virtual, contribuindo para a criação de experiências imersivas ao público. Com o aumento da demanda por conteúdo 3D e a constante evolução do mercado, artistas e designers enfrentam desafios significativos tanto na geração de ideias quanto na criação de texturas realistas que aprimoram a qualidade visual dos objetos. Além desses profissionais, há também um número crescente de desenvolvedores e entusiastas que desejam criar seus próprios jogos, mas que não possuem conhecimento aprofundado em arte digital ou computação gráfica.
+
+Ao mesmo tempo, emergiu uma classe recentemente popular de modelos variáveis latentes de inteligência artificial chamados de modelo de difusão, os quais podem ser usados para várias tarefas, incluindo \textit{denoising} de imagem (reduzir os ruídos), \textit{inpainting} (preenchimento), \textit{upscaling} (aumentar resolução) e geração de imagem, a partir de descrição de texto simples e/ou imagem como a entrada. Essas técnicas ajudaram a popularizar a \gls{IA} gerativa \cite{lawlor2023}, tornando essas ferramentas poderosas para design conceitual em qualquer disciplina que exija criatividade em tarefas de design visual. Isso também se aplica aos estágios iniciais do projeto arquitetônico, envolvendo ideação, esboço e modelagem \cite{ploennigs2023}. As capacidades gerativas dessas ferramentas provavelmente alteraram fundamentalmente os processos criativos pelos quais os criadores formulam ideias e as transformam em produtos \cite{epstein2023}. Diante desses avanços e vantagens notáveis, a IA gerativa tem chamado a atenção da indústria e da comunidade de pesquisa. Seu impacto não se limita apenas aos campos mencionados, mas se estende a setores diversos, como publicidade, entretenimento e educação. Portanto, a adaptação dessas ferramentas inovadoras nas práticas industriais está se tornando uma estratégia importante e promissora.
+
+Neste contexto, este trabalho propõe explorar o potencial da IA gerativa, especialmente o Stable Diffusion, baseado em um tipo particular de modelo de difusão chamado \textit{Latent Diffusion Model}, como uma ferramenta promissora para enfrentar os desafios mencionados e aumentar a eficiência na criação de conteúdo. Pretende-se aplicá-la no desenvolvimento de jogos, explorando sua utilização na criação de ambientes e ativos tridimensionais. Para alcançar resultados satisfatórios, é necessário compreender seu funcionamento e fornecer entradas e configurações corretas, garantindo instruções claras e objetivas para um desempenho otimizado.
+
+% ----------------------------------------------------------
+\section{Objetivos}
+% ----------------------------------------------------------
+
+Este trabalho tem como objetivo investigar o uso de ferramentas de IA gerativa para apoiar a criação de imagens e modelos 3D. A proposta é demonstrar como essas ferramentas podem auxiliar desenvolvedores na etapa de concepção visual de personagens, objetos e cenários, além de explorar sua aplicação na geração de modelos 3D a partir de imagens, contribuindo para o processo de desenvolvimento de jogos digitais. Para isso, será elaborado um manual prático, com exemplos, voltado a iniciantes na área.
+
+% ----------------------------------------------------------
+\subsection{Objetivo Geral}
+% ----------------------------------------------------------
+
+O objetivo geral deste trabalho é investigar e demonstrar como a aplicação de IA gerativa, com foco em Stable Diffusion e suas interfaces Automatic1111 e ComfyUI, pode aprimorar o processo de criação de objeto 3D e suas texturas realistas, fornecendo orientações práticas do uso dela como ferramenta eficaz na modelagem 3D, com sucessivas utilizações na criação de jogo.
+
+% ----------------------------------------------------------
+\subsection{Objetivos Específicos}
+% ----------------------------------------------------------
+\begin{itemize}
+  \item Explorar os conceitos de IA gerativa voltados à geração de imagens e modelos 3D.
+  \item Investigar o funcionamento e os recursos das interfaces Automatic1111 e ComfyUI na geração de imagens.
+  \item Aplicar técnicas de conversão de imagem para modelo 3D com ferramentas compatíveis.
+  \item Desenvolver um manual prático para orientação de usuários iniciantes.
+  \item Avaliar o impacto da IA gerativa no processo criativo, eficiência e produtividade.
+  \item Criar um pequeno protótipo de jogo utilizando elementos criados com auxílio da IA gerativa.
+\end{itemize}
+
+% ----------------------------------------------------------
+\section{Metodologia}
+% ----------------------------------------------------------
+
+Para alcançar os objetivos específicos apresentados, o estudo será conduzido em várias etapas detalhados a seguir:
+
+\vspace{0.5cm}
+\textbf{Etapa 1 – Estado da Arte}
+
+A primeira etapa consistiu na realização de um estudo do estado da arte, visando analisar estudos, artigos e recursos relacionados à aplicação de IA gerativa na modelagem 3D e em contextos criativos, fornecendo uma base sólida para a compreensão do panorama atual do campo e orientando as etapas subsequentes da pesquisa. O levantamento foi realizado por meio de uma revisão sistemática de literatura, cujos procedimentos metodológicos e resultados detalhados estão documentados em relatório técnico específico.
+
+
+\textbf{Atividade 1.1:} Levantamento bibliográfico e técnico sobre o uso de IA gerativa em contextos criativos, com foco em aplicações práticas e pesquisas recentes.
+
+\textbf{Atividade 1.2:} Seleção de artigos e fontes relevantes com base em critérios previamente definidos.
+
+\textbf{Atividade 1.3:} Análise e síntese das informações dos artigos selecionados, destacando tendências e ferramentas mais utilizadas na literatura.
+
+\vspace{1cm}
+
+\textbf{Etapa 2 – Fundamentação Teórica}
+
+Esta etapa consistiu na realização de uma pesquisa sobre o contexto histórico da IA gerativa e nos conceitos fundamentais das principais abordagens nessa área, fornecendo uma base teórica que permite a compreensão aprofundada dos tópicos abordados nas etapas subsequentes.
+
+\textbf{Atividade 2.1:} Levantamento do contexto histórico da IA gerativa, incluindo marcos importantes, evolução tecnológica e contribuições significativas na área.
+
+\textbf{Atividade 2.2:} Pesquisa e estudo das principais abordagens em IA gerativa, com destaque para conceitos, técnicas e ferramentas relevantes.
+
+\vspace{1cm}
+
+\textbf{Etapa 3 – Explicações técnicas}
+
+Serão apresentadas e detalhadas as principais técnicas utilizadas no processo de geração de imagens e modelos 3D com IA.
+
+\textbf{Atividade 3.1:} Explicação sobre técnicas utilizadas na geração de imagens.
+
+\textbf{Atividade 3.2:} Explicação sobre técnicas utilizadas na geração de modelos 3D.
+
+\vspace{1cm}
+
+\textbf{Etapa 4 – Desenvolvimento de manual prático}
+
+Será desenvolvido um manual prático detalhado, contendo instruções passo a passo sobre o uso do Stable Diffusion e de suas interfaces Automatic1111 e ComfyUI, abordando tanto a geração de ideias e texturas para objetos 3D quanto a criação direta de modelos 3D. O manual demonstrará a aplicação desses objetos em um jogo digital, evidenciando a utilidade prática das ferramentas.
+
+\textbf{Atividade 4.1:} Apresentar o uso de Automatic1111 e ComfyUI para geração de imagens.
+
+\textbf{Atividade 4.2:} Demonstrar técnicas que permitem maior controle e estilização, como ControlNet e LoRA.
+
+\textbf{Atividade 4.3:} Apresentar o uso do ComfyUI para geração de modelos 3D.
+
+\textbf{Atividade 4.4:} Demonstrar a correção e aplicação de esqueleto nos modelos 3D.
+
+\textbf{Atividade 4.5:} Apresentar passo a passo a criação de um jogo digital utilizando os modelos 3D.
+
+\vspace{2cm}
+
+\textbf{Etapa 5 – Análise de resultados e considerações éticas}
+
+Após o desenvolvimento do manual e a aplicação prática no jogo, será realizada uma análise dos resultados obtidos, avaliando pontos fortes, limitações e impactos do uso de IA gerativa. Além disso, serão discutidas recomendações para o uso ético, legal e responsável dessas ferramentas, abordando direitos autorais, autoria, originalidade e boas práticas no desenvolvimento de ativos digitais.
+
+
+\textbf{Atividade 5.1:} Apresentar os pontos fortes e limitações das ferramentas de IA gerativa.
+
+\textbf{Atividade 5.2:} Pesquisar e apresentar recomendações para o uso ético, legal e responsável da IA gerativa.
+
+\vspace{1cm}

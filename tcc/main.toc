@@ -1,0 +1,70 @@
+\changetocdepth {4}
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {1}\MakeTextUppercase []{Introdução}}{13}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Objetivos}{13}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Objetivo Geral}{14}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Objetivos Específicos}{14}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Metodologia}{14}{section.1.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase []{Estado da Arte}}{17}{chapter.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase []{Fundamentação Teórica}}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Definição e Conceitos de IA Gerativa}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Contexto Histórico}{19}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Principais Abordagens de IA gerativa}{22}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Redes Adversariais Generativas (GANs)}{22}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Modelos de Difusão}{23}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Tecnologias da IA gerativa}{24}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Stable Diffusion}{24}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Text-to-Image e Image-to-Image}{24}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Inpainting}{26}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}ControlNet}{27}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}LoRA}{28}{subsection.3.4.5}%
+\contentsline {section}{\numberline {3.5}Ferramentas utilizadas}{29}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Automatic1111}{29}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}ComfyUI}{30}{subsection.3.5.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase []{Desenvolvimento do Manual}}{32}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Geração de Imagem}{32}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Geração e Ajuste de Modelos 3D}{37}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Hunyuan 3D 2.0}{37}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Hunyuan 3D 2.5}{39}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Meshy AI}{41}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Correção e Ajuste de Modelos 3D}{42}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Aplicação de Esqueletos e Animação}{44}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Criação de Jogo}{46}{section.4.4}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Resultados e Limitações do Uso de IA gerativa }}{56}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Pontos Fortes Observados}{56}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Limitações}{57}{section.5.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Questões Éticas e Cuidados no Uso de IA Gerativa}}{58}{chapter.6}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Conclusão}}{60}{chapter.7}%
+\vspace {\cftbeforechapterskip }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\contentsline {chapter}{REFERÊNCIAS}{61}{section*.14}%
+\renewcommand *{\cftappendixname }{AP\^ENDICE \space }
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Relatório Técnico}}{63}{appendix.A}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {B}\MakeTextUppercase []{Manual Prático}}{65}{appendix.B}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {C}\MakeTextUppercase []{Protótipo de Jogo em Unreal Engine}}{67}{appendix.C}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {D}\MakeTextUppercase []{Artigo}}{68}{appendix.D}%

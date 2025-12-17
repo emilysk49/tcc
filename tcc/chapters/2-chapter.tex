@@ -1,0 +1,48 @@
+% ----------------------------------------------------------
+\chapter{Estado da Arte}
+% ----------------------------------------------------------
+
+Nesta seção, são destacados os artigos que empregaram IA gerativa de forma eficiente, contribuindo para a modelagem 3D, bem como algumas ferramentas que demonstraram resultados relevantes. Esses artigos foram previamente analisados e sintetizados no relatório técnico \cite{emily2024}, apresentado no Apêndice A, que serve como base para esta revisão. O relatório proporciona uma visão mais abrangente das aplicações e metodologias recentemente utilizadas na área.
+
+Os artigos selecionados apresentam métodos eficazes para a geração de modelos 3D a partir de entradas de texto ou imagens, como os modelos MVDreams e One-2-3-45++. Ambos os modelos de difusão utilizam visualização múltipla para gerar modelos 3D de forma mais coerente. O MVDreams gera modelos 3D a partir de entradas de texto, enquanto o One-2-3-45++ transforma imagens de entrada em modelos 3D. Além destes, foram selecionados artigos que contribuem para a texturização de modelos 3D, como GenesisTex e Material Palette. O GenesisTex sintetiza texturas para geometria 3D a partir de entrada de texto, enquanto o Material Palette extrai mapas \gls{PBR} a partir de imagens de entrada.
+
+Também foram analisadas publicações que apresentam fluxos de trabalho demonstrando a geração de imagens específicas com Stable Diffusion e a criação de modelos 3D. O curso de Stable Diffusion mostram diferentes técnicas para gerar imagens com maior controle, especialmente utilizando ControlNet e LoRA. Essas técnicas podem auxiliar na geração de ideias visuais de personagens, ambientes e objetos para o desenvolvimento de jogos. Além disso, outras publicações detalham os passos para gerar texturas e efeitos de paralaxe com Stable Diffusion. Já os fluxos de trabalho para criação de modelos 3D utilizam plataformas de IA gerativa, como CSM, Meshy AI, Luma Genie AI e Kaedim, que apresentam resultados satisfatórios e eficientes nos projetos relatados pelos autores.
+
+A análise da revisão sistemática realizada revelou tendências e padrões claros no uso da IA gerativa na modelagem 3D para jogos. A maior parte das publicações recentes (2023-2024) concentra-se na geração de modelos 3D, demonstrando o interesse crescente na automação e otimização do processo de criação de personagens e objetos. A geração de texturas e materiais PBR também é significativa, evidenciando a preocupação com a consistência visual e a qualidade estética dos ativos digitais. Já o auxílio ao fluxo de trabalho, como geração de conceitos visuais, mapas de profundidade e efeitos de paralaxe, embora menos explorado, mostra potencial para otimizar etapas intermediárias do \textit{pipeline} de criação.
+
+Para complementar a análise, a Tabela~\ref{tab:resumo_ia_3d}  as tecnologias utilizadas e suas aplicações na modelagem 3D, destacando suas aplicações em geração de modelos, texturização e suporte ao fluxo de trabalho. Observa-se que a maior parte das ferramentas foca na criação de modelos 3D, enquanto algumas abordam a texturização e/ou fluxo de trabalho.
+
+% \begin{figure}[htb]
+% 	\caption{\label{fig:Fig_1}Distribuição das ferramentas de IA gerativa utilizadas em cada tipo de aplicação.}
+% 	\begin{center}
+% 		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/Ferramenta de Inteligência Artificial por Tipo de Aplicação.png}
+% 	\end{center}
+% \end{figure}
+
+\setcounter{table}{0}
+\begin{table}[ht]
+\centering
+\caption{Resumo de aplicações de ferramentas}
+\label{tab:resumo_ia_3d}
+\begin{tabular}{lll}
+\toprule
+\textbf{Tecnologia / Artigo} & \textbf{Aplicação} \\
+\midrule
+MVDreams & Modelos 3D \\
+One-2-3-45++ & Modelos 3D \\
+CSM.ai & Modelos 3D \\
+Meshy AI & Modelos 3D \\
+Luma Genie AI & Modelos 3D \\
+Kaedim & Modelos 3D \\
+GenesisTex & Texturização \\
+Material Palette & Texturização \\
+Stable Diffusion + ControlNet/LoRA & Fluxo de trabalho \\
+3D Parallax & Fluxo de trabalho / Texturização \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+Além disso, a revisão sistemática identificou alguns desafios recorrentes: a dificuldade de controle preciso sobre as gerações, o elevado custo computacional, a necessidade de pós-processamento para garantir coerência e consistência, e o risco de resultados semelhantes aos dados utilizados no treinamento. Esses desafios reforçam a importância de guias e manuais práticos que orientem o uso eficiente das ferramentas, proporcionando maior controle aos desenvolvedores, especialmente aqueles sem experiência prévia em modelagem 3D ou habilidades artísticas.
+
+Em síntese, os resultados da revisão sistemática confirmam que a IA gerativa possui potencial significativo para acelerar a produção de modelos 3D, texturas e ideias visuais, aumentando a produtividade e democratizando o acesso a técnicas avançadas de criação digital. Estes fundamentam a etapa subsequente deste trabalho: o desenvolvimento de um manual prático detalhado para o uso de IA gerativa no desenvolvimento de jogos.

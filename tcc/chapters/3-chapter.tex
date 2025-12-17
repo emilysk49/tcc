@@ -1,0 +1,295 @@
+% ----------------------------------------------------------
+\chapter{Fundamentação Teórica}
+% ----------------------------------------------------------
+Neste capítulo, são abordados conceitos, tipos e abordagens de IA gerativa fornecendo uma base sólida para compreender o papel dessa ferramenta para criação de ideias e texturas na modelagem 3D.
+
+% ----------------------------------------------------------
+\section{Definição e Conceitos de IA Gerativa}
+% ----------------------------------------------------------
+A IA gerativa refere-se a uma categoria de modelos e ferramentas de inteligência artificial projetadas para criar novos conteúdos, como texto, imagens, vídeos, músicas ou código. Essa tecnologia utiliza diferentes técnicas, incluindo redes neurais e algoritmos de aprendizado profundo (\textit{Deep Learning}) para identificar padrões e gerar novos resultados. Trata-se de um subcampo da inteligência artificial focado na criação de conteúdos a partir de conjuntos de dados existentes. Esses algoritmos de IA aprendem com os dados fornecidos e são capazes de gerar saídas semelhantes, mas não idênticas, com base no conhecimento adquirido durante o treinamento (Data Science Academy, 2023). O termo “gerativa” deriva do verbo “gerar”, indicando a capacidade dessas tecnologias de criar novos conteúdos a partir de informações prévias.
+
+% ----------------------------------------------------------
+\section{Contexto Histórico}
+% ----------------------------------------------------------
+
+ As origens da IA remontam à década de 1950 e ao matemático e cientista da computação britânico Alan Turing. Em sua proposta conhecida como Teste de Turing mede a capacidade de uma máquina exibir um comportamento inteligente indistinguível do de um ser humano \cite{seseri2024}. Embora sua proposta estivesse mais voltada à questão da inteligência de forma geral, essa proposta lançou as bases filosóficas e técnicas para o surgimento da IA, influenciando diretamente os estudos subsequentes sobre como máquinas poderiam simular processos cognitivos humanos. 
+ 
+ Outro marco importante na mesma década ocorreu em 1956, com a criação do programa \textit{Logic Theorist} por Allen Newell, Cliff Shaw e Herbert Simon, considerado o primeiro sistema de IA da história. Financiado pela RAND Corporation, o programa foi projetado para simular a resolução de problemas matemáticos, imitando o raciocínio humano \cite{shaker2025}. Nesse mesmo ano, o matemático John McCarthy organizou a Conferência de Dartmouth, reunindo pesquisadores de diversas áreas para discutir a possibilidade de construir máquinas inteligentes. Foi nesse evento que McCarthy cunhou o termo "inteligência artificial", definindo a área de pesquisa como o esforço de criar sistemas capazes de executar tarefas que exigem inteligência humana \cite{shaker2025}. Em 1957, Frank Rosenblatt desenvolveu o Perceptron, o primeiro algoritmo de aprendizado supervisionado para classificadores binários, estabelecendo as bases para as redes neurais e o aprendizado de máquina inicial \cite{singh2024}.
+ 
+ Na década seguinte, um avanço notável ocorreu com o desenvolvimento do programa ELIZA, criado por Joseph Weizenbaum em 1966. Esse programa pioneiro foi desenvolvido para simular uma sessão de terapia reutilizando as respostas fornecidas pelo próprio usuário para formular novas perguntas e assim estimular a continuidade da conversa. Weizenbaum tinha a intenção de demonstrar a simplicidade da inteligência das máquinas ao evidenciar as limitações do ELIZA. No entanto, a capacidade do chatbot de engajar os usuários em conversas foi surpreendentemente eficaz, e muitas pessoas acreditavam estar interagindo com um terapeuta humano \cite{shaker2025}. Assim, o ELIZA representou uma das primeiras demonstrações práticas de geração automatizada de texto em resposta à entrada do usuário, contribuindo significativamente para os fundamentos conceituais e técnicos dos sistemas modernos de IA gerativa em linguagem natural.
+
+ Publicado em 1969, \textit{Perceptrons: An Introduction to Computational Geometry}, de Minsky e Papert, é uma obra fundamental na história da IA que analisou as capacidades e limitações dos perceptrons, um tipo inicial de neurônio artificial. O livro destacou que os perceptrons não conseguiam processar certos tipos de dados, incluindo aqueles que não são linearmente separáveis, o que levou a uma redução significativa no interesse e no financiamento para pesquisas com redes neurais \cite{seseri2024}. Esse cenário contribuiu para o que ficou conhecido como os “invernos da IA” nas décadas de 1970 e 1980 — períodos marcados por redução de recursos financeiros, desaceleração das pesquisas e frustração com os resultados práticos obtidos. Esse movimento foi essencial para a evolução do aprendizado profundo e para o ressurgimento da IA gerativa baseada em redes neurais nas décadas seguintes. Em 1973, Harold Cohen desenvolveu o AARON, um dos primeiros programas capazes de gerar arte de forma autônoma, demonstrando as primeiras formas de IA gerativa \cite{singh2024}. Embora não utilizasse redes neurais ou aprendizado de máquina, o AARON foi um dos primeiros exemplos de uma IA gerativa capaz de produzir resultados criativos.
+ 
+ Em seguida, nas décadas de 1980 e 1990, apesar das limitações enfrentadas durante os chamados “invernos da IA”, importantes avanços continuaram a ser feitos no campo da IA. Em 1986, Geoffrey Hinton, David Rumelhart e Ronald J. Williams popularizaram o algoritmo de retropropagação (\textit{backpropagation}), permitindo o treinamento eficiente de redes neurais multicamadas \cite{singh2024}. Este foi um avanço fundamental na IA e levou ao renascimento do interesse em redes neurais. Esses modelos introduziram a ideia de aprender representações internas dos dados, que poderiam ser utilizadas para gerar novas amostras de forma criativa.
+
+Nos anos seguintes, textos e estudos aprofundados passaram a se destacar em mecanismos de busca e acervos bibliográficos, quando Tom Mitchell publicou seu livro \textit{Machine Learning} em 1997. Pela primeira vez, Mitchell definiu formalmente o aprendizado de máquina como “um programa de computador que aprende com a experiência”. Com base nesse conceito, um grupo de pesquisadores aprofundou e desenvolveu a ideia em seu estudo de aprendizado profundo \cite{shaker2025}. Na década de 2000, o crescimento da capacidade computacional e a disponibilidade de grandes bases de dados viabilizaram experimentos mais ambiciosos com redes neurais profundas, dando origem a modelos mais sofisticados de geração de dados.
+
+Um marco significativo na história da IA gerativa ocorreu em 2014, com a introdução das \gls{GANs} por Ian Goodfellow e seus colegas, que demonstraram ser uma abordagem eficaz para gerar conteúdo novo e realista. Essa técnica baseia-se em uma estrutura onde duas redes neurais (gerador e discriminador) competem para gerar dados realistas. As GANs se tornaram essenciais na área de IA gerativa, usada para criar imagens e vídeos de alta qualidade \cite{singh2024}. Elas tiveram um impacto profundo em campos como visão computacional, processamento de linguagem natural e arte gerativa. Simultaneamente, os \gls{VAE} emergiram como uma técnica poderosa para geração de dados. Nos anos seguintes, a IA gerativa continuou a evoluir com o surgimento de novas técnicas e modelos, como Transformers e GPT. Em 2021, foram lançadas ferramentas de IA gerativa baseadas em modelos de difusão como DALL-E, Stable Diffusion e Midjourney que marcaram o início de uma nova era de criatividade e inovação tecnológica. Esses modelos permitem gerar imagens de alta qualidade a partir de descrições textuais. Uma linha do tempo representativa é mostrada na Figura~\ref{fig:Fig_2}, traçando a trajetória de desenvolvimento dos métodos e aplicações da IA.
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_2}Linha do tempo da história de IA.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.38\textheight, keepaspectratio]{images/historiaIA.png}
+	\end{center}
+	\fonte{\textcite{seseri2024}}
+\end{figure}
+
+% ----------------------------------------------------------
+\section{Principais Abordagens de IA gerativa}
+% ----------------------------------------------------------
+Nesta seção, será apresentado o conceito básico sobre duas das principais abordagens em IA gerativa: as \gls{GANs} e os modelos de difusão. Essas técnicas têm revolucionado a maneira como se criam e se manipulam dados, oferecendo novas possibilidades em diversos campos.
+
+% ----------------------------------------------------------
+\subsection{Redes Adversariais Generativas (GANs)}
+% ----------------------------------------------------------
+
+Uma das abordagens mais populares para a síntese de imagens é utilizar um tipo de GAN projetada para aprender um domínio específico de imagens e, em seguida, gerar imagens totalmente novas, ou seja, os dados sintéticos \cite{kovacik2024}. A implementação envolve dois modelos que competem entre si: um modelo gerador e um modelo discriminador. O modelo discriminador é uma rede neural que tenta distinguir os dados reais dos dados criados pelo gerador, enquanto o modelo gerador é outra rede neural que cria amostras que são indistinguíveis dos dados reais, enganando assim o discriminador \cite{dgoogle2022}.
+
+Durante o treinamento, o gerador recebe uma entrada aleatória, geralmente na forma do ruído, e utiliza técnicas de aprendizado para transformá-la em uma instância de dados sintéticos. Além disso, para melhorar a qualidade dos dados gerados, o gerador incorpora o feedback fornecido pelo discriminador, ajustando seus parâmetros para produzir dados que enganam o discriminador \cite{kovacik2024}. Por outro lado, o discriminador recebe instâncias de dados reais, provenientes de conjuntos de dados autênticos e instâncias de dados falsos, geradas pelo gerador. Para melhorar, o discriminador aprende sendo penalizado por classificação errada. A representação visual da arquitetura GANs pode ser visualizada na Figura~\ref{fig:Fig_3}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_3}Arquitetura de GANs.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.25\textheight, keepaspectratio]{images/arquiteturaGANS.jpeg}
+	\end{center}
+	\fonte{Yashwant Signgh Kaurav (2023).}
+\end{figure}
+
+% ----------------------------------------------------------
+\subsection{Modelos de Difusão}
+% ----------------------------------------------------------
+
+Os modelos de difusão se destacaram como uma inovação significativa no campo do aprendizado de máquina, particularmente em tarefas de geração e restauração de dados. Eles são considerados uma classe de modelos de IA gerativa capazes de gerar imagens de alta qualidade, ao contrário de outros modelos, como GANs e VAEs, que apresentam dificuldades para produzir imagens detalhadas em alta resolução \cite{ahirwar2023}. A essência do modelo de difusão reside em dois processos fundamentais: o processo de adição e remoção de ruído.
+
+O primeiro passo no funcionamento de um modelo de difusão é o processo de adição de ruído, também conhecido como processo direto. Nesse estágio, dados não estruturados, como imagens claras e nítidas, são gradualmente transformados em dados ruidosos. O processo começa com a adição de uma pequena quantidade de ruído gaussiano à imagem original, repetida em várias etapas, aumentando progressivamente o ruído até que a imagem se transforme quase completamente em ruído puro.
+
+Em seguida, após concluir o processo de adição de ruído, inicia-se o processo de remoção de ruído, com o objetivo de reverter o processo anterior, eliminando o ruído e recuperando a imagem original \cite{ahirwar2023}. Para isso, utiliza-se um modelo de aprendizado profundo, geralmente uma rede neural convolucional, eficiente na captura de padrões espaciais. A partir do treinamento, o modelo aprende a recuperar os dados originais a partir do ruído, utilizando o caminho inverso da cadeia de Markov, mapeando a distribuição complexa dos dados de volta para uma distribuição simples, permitindo que o espaço latente represente recursos significativos, padrões e variáveis latentes presentes nos dados \cite{walker2023}. Assim, após o processo de treinamento, o modelo de difusão é capaz de realizar tarefas notáveis, como gerar novas imagens ou restaurar imagens degradadas a partir de entradas ruidosas, como apresentado na Figura~\ref{fig:Fig_4}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_4}Passos para adição e remoção de ruído.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.22\textheight, keepaspectratio]{images/aplicacaoRuido.png}
+	\end{center}
+	\fonte{SONG, Yang et al. Score-Based Generative Modeling through Stochastic Differential Equations (2020). Disponível em: \url{https://doi.org/10.48550/arXiv.2011.13456}}
+\end{figure}
+
+Ao contrário dos modelos gerativos, como as GANs ou os VAEs, que geram imagens por meio de uma única passagem direta, os modelos de difusão exigem múltiplas passagens sucessivas. Essa característica impõe uma carga computacional mais elevada durante o treinamento, pois o modelo deve aprender a remoção de ruído em várias escalas. Além disso, a natureza iterativa do processo aumenta o tempo de inferência, tornando os modelos de difusão computacionalmente menos eficientes do que outros modelos gerativos \cite{karras2022}.
+
+% ----------------------------------------------------------
+\section{Tecnologias da IA gerativa}
+% ----------------------------------------------------------
+
+Esta seção apresenta os principais conceitos e tecnologias empregadas no contexto deste trabalho, incluindo o modelo Stable Diffusion e seus diferentes modos de uso, como \textit{text-to-image} e \textit{image-to-image}, além de extensões e técnicas complementares, como o ControlNet e o LoRA. A compreensão dessas tecnologias é fundamental para contextualizar o desenvolvimento do manual prático e sua aplicação na geração de modelos 3D.
+
+% ----------------------------------------------------------
+\subsection{Stable Diffusion}
+% ----------------------------------------------------------
+O Stable Diffusion é um grande modelo de difusão para geração de imagens a partir do texto, treinado com bilhões de imagens. Ele foi desenvolvido pela empresa Stability AI, em parceria com pesquisadores da CompVis (Universidade de Heidelberg) e da RunwayML, e lançado em 2022 como um modelo de código aberto. O Stable Diffusion utiliza representações latentes codificadas a partir dos dados de treinamento como entrada \cite{mishra2023}. 
+
+A geração de imagens pelo modelo é realizada por meio da codificação dos \textit{prompts} em vetores latentes, utilizando modelos de linguagem pré-treinados, e pela aplicação do processo de difusão nesse espaço comprimido. O uso do espaço latente reduz o consumo de memória e o tempo computacional em comparação ao processamento direto no espaço de \textit{pixels}, o que facilita tanto o treinamento quanto a inferência do modelo \cite{rombach2022}.
+
+Além disso, por ser código aberto e apresentar alta eficiência, o Stable Diffusion consolidou-se como uma ferramenta versátil para a geração rápida de imagens de alta qualidade, sendo amplamente utilizado em fluxos de criação artística.
+% ----------------------------------------------------------
+\subsection{Text-to-Image e Image-to-Image}
+% ----------------------------------------------------------
+O text-to-image é uma técnica de geração de imagens a partir de um \textit{prompt} de texto. O processo inicia-se com a tokenização do texto, em que a descrição é dividida em unidades linguísticas menores. Essas unidades são então codificadas em vetores latentes por meio de modelos como o \textit{CLIP Text Encoder} \cite{lee2023}. Em seguida, esses vetores guiam a criação da imagem: o processo começa a partir de uma amostra inicialmente ruidosa e, por meio de um procedimento iterativo de redução de ruído — denominado \textit{denoising} —, a imagem final é construída, aproximando-se da representação visual correspondente ao prompt textual.
+
+A Figura~\ref{fig:Fig_5} ilustra como a escolha de palavras em um prompt textual pode influenciar significativamente a geração da imagem no modelo Stable Diffusion. Essa visualização destaca a importância da escolha precisa das palavras nos \textit{prompts} para controlar aspectos específicos da imagem gerada, como estilo, composição e elementos visuais. Além disso, demonstra como o modelo interpreta e responde a modificações sutis na descrição textual, proporcionando uma compreensão mais profunda do processo de geração de imagens.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_5}Exemplo de text-to-image.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/txt-to-img-exp.png}
+	\end{center}
+	\fonte{LEE, Seongmin et al. Diffusion Explainer: Visual Explanation for Text-to-image Stable Diffusion (2024). Disponível em: \url{https://arxiv.org/pdf/2305.03509}}
+\end{figure}
+
+A técnica de image-to-image é uma extensão do text-to-image, na qual o modelo recebe como entrada uma imagem inicial, transformando-a em uma nova imagem, mantendo os elementos estruturais e o conceito original. Portanto, o image-to-image permite refinar, estilizar ou alterar a imagem de entrada, com o prompt textual como guia. 
+
+Dessa forma, o image-to-image combina a interpretação semântica do texto com a preservação das características visuais da imagem de entrada para gerar uma nova imagem. O processo de geração é semelhante ao text-to-image, mas, em vez de começar com uma imagem totalmente ruidosa, ele utiliza a imagem de entrada como base para o refinamento.
+
+A Figura~\ref{fig:Fig_6} ilustra a arquitetura geral do modelo Stable Diffusion. A imagem inicial é primeiro codificada em um espaço latente. Em seguida, realiza o processo de denoising, no qual o ruído é removido iterativamente da representação latente. Durante esse processo, o prompt textual serve para guiar a geração da imagem. Por fim, a representação latente é decodificada de volta para o espaço de pixels, produzindo a imagem final.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_6}Exemplo de image-to-image.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.22\textheight, keepaspectratio]{images/img-to-img-exp.png}
+	\end{center}
+	\fonte{NGUYEN, Sang. Stable Diffusion: The Expert Guide (2025). Disponível em: \url{https://bestarion.com/stable-diffusion-the-expert-guide/}}
+\end{figure}
+
+% ----------------------------------------------------------
+\subsection{Inpainting}
+% ----------------------------------------------------------
+O inpainting é uma técnica de edição de imagem que permite preencher, apagar ou substituir partes de uma imagem. No Stable Diffusion, o inpainting é realizado usando uma máscara que indica a região a ser modificada. Um prompt textual pode ser fornecido para orientar como a região mascarada deve ser modificada. Além disso, o processo é similar ao text-to-image e image-to-image, o modelo aplica denoising iterativo sobre a área mascarada, preservando o restante da imagem sem alterações indesejadas.
+
+A Figura~\ref{fig:Fig_7} mostra o inpainting no Stable Diffusion. Uma máscara foi aplicada sobre o tênis, e o modelo, guiado por um prompt textual, substituiu o tênis por um sapato social, mantendo o fundo da natureza inalterado.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_7}Exemplo de inpainting.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.25\textheight, keepaspectratio]{images/inpainting.jpg}
+	\end{center}
+	\fonte{KARTHIK, Shanmukha. In-Depth Guide to Stable Diffusion Inpainting Techniques (2024).}
+\end{figure}
+
+% ----------------------------------------------------------
+\subsection{ControlNet}
+% ----------------------------------------------------------
+O ControlNet é uma arquitetura de rede neural projetada para adicionar controles condicionais espaciais a modelos de difusão. Ele permite que os usuários forneçam condições adicionais, como esboços, mapas de bordas, mapas de profundidade ou poses humanas, para guiar a geração da imagem com maior precisão. Além disso, o ControlNet cria uma cópia treinável das camadas do modelo principal, conectadas por camadas convolucionais inicializadas com zeros, garantindo que o modelo original não seja alterado durante o treinamento \cite{zhang2023}.
+
+Além disso, o ControlNet permite controlar o processo criativo por meio de diferentes tipos de parâmetros. Esses controles permitem que o usuário direcione o modelo de IA para gerar imagens mais próximas de suas intenções, garantindo consistência e precisão nos detalhes desejados. Entre os tipos de controle mais comuns, destacam-se:
+\begin{itemize}
+    \item \textbf{Canny Edge:} guia o modelo pelas bordas da imagem de referência, mantendo a forma dos objetos.
+    \item \textbf{Open Pose:} define a pose de personagens, útil para gerar referências de postura antes da modelagem 3D.
+    \item \textbf{Depth/Normal Map:} fornece informações de profundidade, facilitando a percepção tridimensional para modelagem.
+\end{itemize}
+
+A Figura~\ref{fig:Fig_8} apresenta exemplos de controles para geração de imagens. Essa figura evidencia como o ControlNet permite maior controle sobre a posição, forma e elementos visuais das imagens geradas, combinando informações estruturais fornecidas pelo usuário com orientação textual e mantendo coerência e detalhes na saída final.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_8}Exemplos de ControlNet.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.26\textheight, keepaspectratio]{images/controlnet.png}
+	\end{center}
+	\fonte{ZHANZ, Lvmin et al. Adding Conditional Control to Text-to-Image Diffusion Models (2023).}
+\end{figure}
+
+% ----------------------------------------------------------
+\subsection{LoRA}
+% ----------------------------------------------------------
+O \gls{LoRA} é uma técnica que permite adaptar modelos de aprendizado profundo de grande escala com baixo custo computacional. Em vez de treinar todos os pesos do modelo, o LoRA insere pequenas matrizes de baixo \textit{rank} nas camadas existentes, ajustando apenas essas matrizes durante o treinamento. Dessa forma, é possível ensinar o modelo a gerar imagens ou estilos específicos sem alterar os pesos originais, reduzindo significativamente o tempo, a memória e os recursos de processamento \cite{lora2022}.
+
+Essa abordagem é útil na criação de imagens e personagens para jogos, pois o LoRA pode ser treinado com um estilo visual específico ou até mesmo para reproduzir um personagem particular.
+
+A Figura~\ref{fig:Fig_9} ilustra exemplos de imagens geradas com LoRAs treinados com estilos distintos. É possível observar que o mesmo prompt pode gerar estilos diferentes, dependendo do LoRA utilizado.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_9}Exemplos de LoRA.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/lora.png}
+	\end{center}
+	\fonte{CUI, Zhipu et al. AC-LoRA: Auto Component LoRA for Personalized Artistic Style Image Generation (2025). Disponível em: \url{https://arxiv.org/pdf/2504.02231}}
+\end{figure}
+
+% ----------------------------------------------------------
+\section{Ferramentas utilizadas}
+% ----------------------------------------------------------
+Diversas interfaces e plataformas foram desenvolvidas para tornar mais acessível a manipulação de modelos de IA generativa por usuários técnicos e não técnicos. Essas ferramentas apresentam perfis distintos, variando desde interfaces minimalistas voltadas a iniciantes até soluções mais robustas, otimizadas para produção e colaboração. Para contextualizar a escolha das ferramentas adotadas neste trabalho, a Tabela \ref{tab:comparacao_webui} apresenta uma comparação entre algumas das principais interfaces WebUI para Stable Diffusion. Observa-se que, embora existam alternativas mais simples ou mais especializadas, o Automatic1111 e o ComfyUI se destacam por oferecerem um equilíbrio superior entre flexibilidade, recursos avançados, suporte a extensões e ampla adoção pela comunidade.
+
+\begin{table}[ht]
+\centering
+\caption{Comparação entre principais interfaces WebUI para Stable Diffusion}
+\label{tab:comparacao_webui}
+\begin{tabular}{llll}
+\toprule
+\textbf{WebUI} & \textbf{Uso recomendado} & \textbf{Dificuldade} & \textbf{Diferencial} \\
+\midrule
+Automatic1111 & Usuários em geral & Moderada & Muitas extensões \\
+ComfyUI & Usuários avançados & Alta & Fluxo baseado em nós \\
+Fooocus & Iniciantes & Baixa & Simplicidade \\
+Forge & Desempenho & Moderada & Otimização de velocidade \\
+EasyDiffusion & Uso imediato & Muito baixa & Instalação 1-clique \\
+InvokeAI & Profissionais & Moderada & Editor de canvas \\
+SD.Next & Usuários avançados & Alta & Recursos mais recentes \\
+SwarmUI & Equipes & Moderada & Multiusuário \\
+MetaStable & Uso simplificado & Baixa & Interface limpa \\
+StabilityMatrix & Múltiplas instalações & Baixa & Gerenciador de WebUI \\
+MochiDiffusion & Usuários Mac & Fácil & Nativo no macOS \\
+\bottomrule
+\end{tabular}
+
+\begin{center}
+\footnotesize Fonte: Adaptado de Propel RC (2025). Disponível em: \url{https://www.propelrc.com/11-best-stable-diffusion-webuis}.
+\end{center}
+\end{table}
+
+
+
+Esta seção apresenta as ferramentas exploradas neste trabalho, destacando suas características, motivações para a escolha e contribuições específicas na geração de imagens e modelos aplicados ao desenvolvimento de jogos.
+
+% ----------------------------------------------------------
+\subsection{Automatic1111}
+% ----------------------------------------------------------
+O Automatic1111 é uma das primeiras interfaces gráficas baseadas na web a permitir a utilização do modelo Stable Diffusion de forma interativa. Trata-se de uma ferramenta de código aberto que oferece um ambiente coeso e intuitivo, reunindo em uma única interface todos os recursos essenciais para a criação de imagens geradas por IA. Entre suas funcionalidades, destacam-se o suporte a ControlNet, LoRA, o ajuste de \textit{prompts} e diversas extensões desenvolvidas pela comunidade. Essa flexibilidade torna o Automatic1111 uma ferramenta popular tanto para usuários iniciantes quanto para avançados, que desejam explorar a geração de imagens personalizadas.
+
+A Figura~\ref{fig:Fig_10} ilustra a interface do Automatic1111, evidenciando a disposição dos principais painéis de controle e os parâmetros de geração de imagens utilizados pelo modelo Stable Diffusion.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_10}Interface de Automatic1111.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/automatic1111.png}
+	\end{center}
+\end{figure}
+
+% ----------------------------------------------------------
+\subsection{ComfyUI}
+% ----------------------------------------------------------
+O ComfyUI se tornou uma das interfaces web de código aberto que mais cresce na comunidade do Stable Diffusion, destacando-se por ser uma alternativa mais poderosa e flexível em comparação a outras plataformas. Diferentemente do Automatic1111, o ComfyUI adota uma abordagem visual baseada em nós, na qual o usuário define o fluxo de trabalho conectando módulos entre si, de forma semelhante a um fluxograma. Essa estrutura permite maior controle sobre cada etapa do processo de geração, facilitando a personalização, a integração de extensões como ControlNet e LoRA, e a criação de fluxos de trabalho complexos para diferentes estilos e aplicações.
+
+A Figura~\ref{fig:Fig_11} apresenta a interface do ComfyUI, é possível observar o ambiente de criação visual baseado em nós, no qual o usuário organiza o \textit{workflow} (fluxo de trabalho) conectando diferentes módulos de processamento de imagem.
+
+\newpage
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_11}Interface de ComfyUI.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.26\textheight, keepaspectratio]{images/comfyui.png}
+	\end{center}
+\end{figure}
+
+
+A Tabela \ref{tab:comp_a1111_comfyui} sintetiza os principais aspectos comparativos entre Automatic1111 e ComfyUI. Automatic1111 se mostra mais apropriada para quem busca rápida familiarização e geração pontual de imagens -- ideal para prototipagem, experimentação ou uso eventual. Por outro lado, o ComfyUI oferece vantagens importantes para tarefas que exigem fluxos de trabalho mais complexos, como geração de vídeos, criação de modelos 3D e automação de pipelines de produção, recursos que não estão disponíveis no Automatic1111. Por essas características, o ComfyUI é ideal para etapas que demandam consistência, reutilização e maior controle sobre o processo de criação de ativos digitais.
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\caption{Comparativo entre Automatic1111 e ComfyUI.}
+\label{tab:comp_a1111_comfyui}
+\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Critério} & \textbf{Automatic1111} & \textbf{ComfyUI} \\
+\hline
+Instalação & Instalação com 1-clique, simples e rápida & Requer setup manual (dependências, configurações) \\
+\hline
+Curva de aprendizado & Fácil de usar -- ideal para iniciantes & Mais complexa para iniciantes -- exige tempo para entender baseada em nós \\
+\hline
+Rapidez em tarefas simples & Rápido para imagens isoladas e simples & Leve vantagem ou equivalente (fluxos simples) \\
+\hline
+Desempenho em workflows complexos & Menos eficiente, uso de \gls{VRAM} maior & 30--60\% mais rápido, melhor uso de VRAM, viável em hardware modesto \\
+\hline
+Reutilização & Parâmetros devem ser manualmente definidos a cada geração & Workflows salváveis (no arquivo JSON), consistência entre execuções \\
+\hline
+Flexibilidade & Extensões amplas e comunidade madura & Suporte rápido a novos modelos, pipelines complexos, mistura de técnicas \\
+\hline
+Perfil ideal de uso & Geração rápida, experimentação, uso pontual & Produção profissional, fluxos complexos e suporte a técnicas avançadas (vídeo, áudio e modelos 3D) \\
+\hline
+\end{tabular}
+\\[1ex]
+\centering
+\footnotesize Fonte: Adaptado de Apatero (2025). Disponível em: \url{https://apatero.com/blog/comfyui-vs-automatic1111-which-should-you-use-2025}.
+\end{table}
+
+
+
+
+% % ----------------------------------------------------------
+% \subsubsubsection{Exemplo tabela}
+% % ----------------------------------------------------------
+
+% De acordo com \textcite{ibge1993}, tabela é uma forma não discursiva de apresentar informações em que os números representam a informação central. Ver \autoref{tab:Tab_1}.
+
+% \begin{table}[htb]
+% 	\ABNTEXfontereduzida
+% 	\caption{\label{tab:Tab_1}Médias concentrações urbanas 2010-2011.}
+% 	\begin{tabular}{@{}p{3.0cm}p{1.5cm}p{2cm}p{2.5cm}p{2.5cm}p{2.5cm}@{}}
+% 		\toprule
+% 		\textbf{Média concentração urbana} & \multicolumn{2}{l}{\textbf{População}} & \textbf{Produto Interno Bruto – PIB (bilhões R\$)} & \textbf{Número de empresas} & \textbf{Número de unidades locais} \\ \midrule
+% 		\textbf{Nome}                      & \textbf{Total}   & \textbf{No Brasil}  &                                                   &                             & \\
+% 		                      &    &    &                                                   &                             & \\
+% 		Ji-Paraná (RO)                     & 116 610          & 116 610             & 1,686                                             & 2 734                       & 3 082 \\
+% 		Parintins (AM)                     & 102 033          & 102 033             & 0,675                                             & 634                         & 683 \\
+% 		Boa Vista (RR)                     & 298 215          & 298 215             & 4,823                                             & 4 852                       & 5 187 \\
+% 		Bragança (PA)                      & 113 227          & 113 227             & 0,452                                             & 654                         & 686 \\ \bottomrule
+% 	\end{tabular}
+% 	\fonte{\textcite{ibge2016}.}
+% \end{table}

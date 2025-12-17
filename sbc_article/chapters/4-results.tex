@@ -1,0 +1,71 @@
+\section{Resultados}
+
+\subsection{Resultados da Geração dos Modelos 3D}
+
+A Figura~\ref{fig:fluxo_maricota} apresenta um exemplo representativo do fluxo utilizado neste trabalho. A imagem original da personagem Maricota, de Franklin Cascaes, foi utilizada como entrada para a geração de uma variação estilizada por IA. Em seguida, essa imagem processada serviu como base para a etapa de Image-to-3D, resultando no modelo 3D exibido na figura.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\columnwidth, keepaspectratio]{images/resultado_modelo3D.png}
+    \caption{Processo de criação de personagem 3D. Fonte: autoria própria}
+    \label{fig:fluxo_maricota}
+\end{figure}
+
+\subsection{Comparação de modelos que geram malha 3D}
+
+Foram utilizadas diferentes ferramentas de Image-to-3D — Hunyuan 3D 2.0, Hunyuan 3D 2.5 e Meshy AI — com a mesma imagem de entrada. Como mostrado na Figura~\ref{fig:modelos3d}, cada ferramenta apresentou características visuais e estruturais distintas. A Tabela~\ref{tab:comparacao3d} sintetiza as principais diferenças observadas, incluindo qualidade da malha e textura, limites de uso e tipo de execução.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\columnwidth, keepaspectratio]{images/comparacao.png}
+    \caption{Comparação entre resultados gerados por modelos de IA gerativa diferentes. Fonte: autoria própria}
+    \label{fig:modelos3d}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{l l l l l}
+\hline
+\textbf{Ferramenta} & \textbf{Qualidade da Malha/Textura} & \textbf{Execução} & \textbf{Limites de Uso} \\
+\hline
+Hunyuan 3D 2.0 & Média, pequenas falhas & Local & Uso ilimitado \\
+Hunyuan 3D 2.5 & Alta, qualidade muito boa & Plataforma Online & 20 gerações/dia \\
+Meshy AI & Boa, mas menos fiéis à entrada & Plataforma Online & 20 gerações/mês \\
+\hline
+\end{tabular}
+\caption{Comparação entre ferramentas de geração de modelos 3D a partir de imagens. Fonte: autoria própria}
+\label{tab:comparacao3d}
+\end{table}
+
+
+\subsection{Ativos e Integração no Jogo}
+
+Os ativos como gemas, plataformas e grades de madeira foram criados com o Hunyuan 3D 2.5 via Text-to-3D, demonstrando a viabilidade de gerar objetos jogáveis com auxílio de IA. A Figura~\ref{fig:ativos_jogo} apresenta as gemas geradas partir do prompt textual apresentado.  
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\columnwidth, keepaspectratio]{images/gemas.png}
+    \caption{Gemas criadas por Hunyuan 3D 2.5. Fonte: autoria própria}
+    \label{fig:ativos_jogo}
+\end{figure}
+
+O protótipo desenvolvido utilizou como cenário a Fortaleza de Anhatomirim, fornecida pelo professor Flávio Andaló, adaptada para o jogo com elementos adicionais e substituição de texturas por versões geradas por IA. A Figura~\ref{fig:ambiente} e~\ref{fig:entrada} apresentam o protótipo do jogo, destacando a aplicação dos ativos e texturas geradas por IA, bem como a composição do cenário com vegetação e elementos interativos. Essa demonstração evidencia a viabilidade do uso de IA gerativa para acelerar a criação de conteúdos jogáveis, mantendo controle sobre a estética e a funcionalidade do ambiente.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\columnwidth, keepaspectratio]{images/ambiente.png}
+    \caption{Ambiente do jogo: Ilha do Anhatomirim. Fonte: autoria própria}
+    \label{fig:ambiente}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\columnwidth, keepaspectratio]{images/entrada.png}
+    \caption{Entrada da Ilha do Anhatomirim. Fonte: autoria própria}
+    \label{fig:entrada}
+\end{figure}

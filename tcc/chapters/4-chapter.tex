@@ -1,0 +1,424 @@
+% ----------------------------------------------------------
+\chapter{Desenvolvimento do Manual}
+% ----------------------------------------------------------
+
+Nesta seção, apresenta-se o desenvolvimento de um manual prático \cite{manual} — disponível no Apêndice B — para a utilização de ferramentas de IA gerativa na criação de modelos 3D, especialmente personagens, destinados a jogos 3D desenvolvidos na Unreal Engine 5. O manual foi elaborado com foco em usuários com pouca experiência em modelagem, bem como em estudantes de computação gráfica, oferecendo instruções que permitem criar modelos 3D de forma criativa e ágil.
+
+O manual está organizado de forma a conduzir o usuário progressivamente, iniciando com a apresentação das ferramentas utilizadas, passando pela geração de imagens e personagens, e concluindo com a integração dos ativos gerados à Unreal Engine 5. Cada capítulo foi planejado para fornecer instruções detalhadas, claras e ilustradas, combinando explicações e exemplos práticos visuais, permitindo que o usuário compreenda tanto os conceitos envolvidos quanto sua aplicação direta.
+
+A seguir, cada etapa do manual será resumida, mostrando como os conceitos teóricos podem ser aplicados na prática, desde a criação de imagens de referência até a implementação de personagem no jogo.
+% ----------------------------------------------------------
+\section{Geração de Imagem}
+% ----------------------------------------------------------
+A base para a criação dos modelos 3D é a geração de imagens, que é detalhada utilizando as interfaces Automatic1111 e ComfyUI. O manual apresenta instruções sobre como utilizar ambas as interfaces, ensinando técnicas de text-to-image e image-to-image.
+
+Durante a geração de imagem, diversos parâmetros podem influenciar o resultado visual. O usuário pode ajustar esses parâmetros, testando e personalizando-os para gerar a imagem desejada, observando como cada configuração influencia o resultado final. O manual descreve os principais parâmetros:
+
+\begin{itemize}
+    \item \textbf{Prompt Positivo:} descreve os elementos que devem estar presentes na imagem.
+    \item \textbf{Prompt Negativo:} define o que deve ser evitado na imagem, ajudando a refinar o resultado.
+    \item \textbf{Peso das Palavras-chave:} controla a importância de termos específicos dentro do prompt, atribuindo pesos.
+    \item \textbf{Steps (passos):} número de iterações do modelo, geralmente, maior quantidade de steps aumenta o detalhamento.
+    \item \textbf{CFG Scale:} ajusta o quanto o modelo segue o prompt, equilibrando fidelidade e criatividade.
+    \item \textbf{Sampler:} algoritmo usado para remoção de ruído, influenciando estilo e textura.
+    \item \textbf{Modelos de Difusão:} escolha do modelo base, que determina o estilo e a qualidade da imagem gerada.
+    \item \textbf{Batch Count/Batch Size:} Batch Size determina o número de imagens geradas simultaneamente em cada iteração, enquanto o Batch Count indica quantas vezes esse lote será processado.
+    \item \textbf{Denoise:} determina a quantidade de ruído adicionada à imagem inicial antes do processo de geração.
+\end{itemize}
+
+Além disso, o manual dedica uma subseção à geração de mapas de texturas essenciais para materiais 3D realistas, como \textit{Base Color, Normal Map, Height Map} e \textit{Curvature Map}, detalhando como automatizar essa conversão usando nós customizados no ComfyUI (Figura~\ref{fig:Fig_12}). O \textit{Base Color} define as cores básicas da superfície, enquanto o \textit{Normal Map} adiciona detalhes de relevo sem alterar a geometria do modelo. O \textit{Height Map} representa a variação de altura da superfície, permitindo efeitos de profundidade adicionais, e o \textit{Curvature Map} evidencia a curvatura e contornos do objeto, útil para sombreado e aplicação de efeitos de desgaste.
+
+Ao automatizar a geração desses mapas com nós no ComfyUI, o manual oferece aos usuários a possibilidade de produzir rapidamente texturas detalhadas e consistentes, mesmo sem amplo conhecimento em modelagem 3D ou texturização manual. Essa metodologia permite reduzir o esforço e o tempo necessários para a produção de texturas, garantindo maior previsibilidade e fidelidade visual dos ativos.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_12}Exemplo de geração de textura - ComfyUI.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{images/workflow-textura.png}
+	\end{center}
+\end{figure}
+
+No modo image-to-image, foram apresentadas diversas técnicas úteis para refinar ou estilizar imagens, permitindo transformar uma imagem de referência em uma nova versão visual, mantendo a coerência estrutural. Durante o processo, o parâmetro \textit{denoise strength} foi demonstrado na prática, evidenciando que, nesse modo, exerce grande impacto no controle do nível de transformação e na fidelidade ao estilo original. Essa etapa do manual reforça o papel da IA gerativa como ferramenta criativa, na qual ajustes graduais produzem resultados mais consistentes e personalizados.
+
+A Figura~\ref{fig:Fig_13} apresenta a interface do ComfyUI com o \textit{workflow} de image-to-image. Como imagem de entrada, utilizou-se a obra de Franklin Cascaes, "Maricota", transformada em uma versão robótica, facilitando a geração do modelo 3D subsequente. As obras de Franklin Cascaes, renomado artista de Santa Catarina, são reconhecidas por registrar com riqueza de detalhes a cultura, o folclore e as tradições locais, incluindo personagens, lendas e cenas do cotidiano. Elas representam um importante legado cultural, constituindo uma referência relevante para pesquisas e criações artísticas baseadas na tradição e folclore de Santa Catarina. Para o exemplo prático do manual, escolheu-se a "Maricota", devido às suas características humanoides. Essa forma facilita a aplicação de esqueleto durante a modelagem 3D, tornando o processo de animação mais simples e eficiente.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_13}Exemplo de geração de imagem - ComfyUI.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/workflow-exp.jpg}
+	\end{center}
+\end{figure}
+
+O inpainting foi empregado de maneira direcionada para corrigir áreas específicas, garantindo a continuidade visual antes da modelagem 3D. No manual, apresenta-se um exemplo prático (Figura~\ref{fig:Fig_14}): a partir de uma imagem gerada via image-to-image, aplicou-se uma máscara sobre a mão da personagem que segurava uma arma, junto com um prompt solicitando a remoção do objeto. O resultado foi uma nova imagem da mesma personagem, agora sem a arma, preservando sua integridade visual.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_14}Exemplo prático de inpainting do manual.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.36\textheight, keepaspectratio]{images/inpainting-manual.png}
+	\end{center}
+\end{figure}
+
+Em seguida, foram apresentados exemplos práticos utilizando o ControlNet, com os modelos OpenPose, Canny Edge, Scribble e Depth Map. Cada modelo possui características e objetivos distintos, permitindo que o usuário selecione a opção mais adequada ao tipo de controle desejado. A Figura~\ref{fig:Fig_15} ilustra um exemplo prático com o modelo Scribble: a imagem de entrada foi um desenho feito manualmente, e o resultado manteve fielmente as características estruturais do esboço original.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_15}Exemplo prático de ControlNet Scribble do manual.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.3\textheight, keepaspectratio]{images/scribble-manual.png}
+	\end{center}
+\end{figure}
+
+Por fim, o manual aborda a integração de modelos LoRA, módulos leves que permitem aplicar estilos, temáticas e identidades visuais específicas aos modelos base. São apresentados sites que disponibilizam diversas opções de modelos LoRA treinados para download, além de instruções sobre como inseri-los e utilizar a palavra de ativação correspondente no prompt, ajustando o peso de influência para calibrar a intensidade do estilo sobre a imagem final. Para exemplificar, o manual mostra resultados obtidos ao aplicar diferentes modelos LoRA à mesma imagem de entrada, a personagem "Maricota", evidenciando como a técnica permite variações estilísticas mantendo a estrutura original da referência (Figura~\ref{fig:Fig_16}).
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_16}Exemplos de resultados de LoRA do manual.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/lora-manual.png}
+	\end{center}
+\end{figure}
+
+Assim, a seção de geração de imagens do manual prático oferece um guia completo para a criação de ativos visuais de alta qualidade, detalhando desde a preparação das imagens e o ajuste de parâmetros até o uso de técnicas como Image-to-Image, Inpainting, ControlNet e LoRA. Cada técnica é apresentada com exemplos ilustrativos e instruções passo a passo, disponíveis tanto nas interfaces Automatic1111 quanto ComfyUI. Dessa forma, o usuário pode escolher a ferramenta de sua preferência e compreender como aplicar cada recurso para refinar, estilizar e estruturar imagens de referência, garantindo consistência e qualidade visual antes da posterior modelagem 3D.
+
+% ----------------------------------------------------------
+\section{Geração e Ajuste de Modelos 3D}
+% ----------------------------------------------------------
+
+Após a geração e o refinamento das imagens de referência, a etapa seguinte do manual prático aborda a criação e o ajuste de modelos 3D a partir dessas imagens. Aqui são detalhadas as técnicas e ferramentas utilizadas para transformar uma imagem de personagem em modelos 3D consistentes. São apresentadas tanto a criação inicial dos modelos por meio de ferramentas de IA quanto as técnicas de refinamento e correção necessárias para garantir qualidade visual e consistência estrutural.
+
+% ----------------------------------------------------------
+\subsection{Hunyuan 3D 2.0}
+% ----------------------------------------------------------
+
+O primeiro modelo abordado para a geração de modelos 3D é o Hunyuan 3D 2.0, desenvolvido pela Tencent \cite{hunyuan3d2}. Esta ferramenta permite criar malhas tridimensionais otimizadas e gerar mapas de textura realistas a partir de uma única imagem 2D. De acordo com o artigo publicado pela \textit{Towards Deep Learning}, o Hunyuan 3D 2.0 representa um avanço significativo ao democratizar uma tecnologia antes acessível apenas a profissionais especializados, além de abrir inúmeras possibilidades para áreas como impressão 3D, jogos, cinema e animação, contribuindo para a redução de custos na produção de ativos tridimensionais.
+
+O Hunyuan 3D 2.0 apresenta um \textit{pipeline} de geração em duas etapas, iniciando pela criação de uma malha base sem textura (Hunyuan 3D-ShapeVAE e Hunyuan 3D-DiT), seguida pela síntese do mapa de textura (Hunyuan 3D-Paint) correspondente a essa malha \cite{hunyuan3d2}. Assim, a arquitetura pode ser detalhada em três técnicas principais:
+
+\begin{enumerate}
+    \item \textbf{Hunyuan 3D-ShapeVAE:} Nesta etapa inicial, utiliza-se uma representação compacta dos objetos 3D, transformando formas existentes em tokens. Esse processo é realizado com amostragem por importância, dando maior atenção a bordas, cantos e áreas detalhadas, garantindo que os elementos finos do modelo sejam preservados \cite{parth2025}. Ao converter as formas tridimensionais em uma representação processável pela IA, o sistema permite resultados mais precisos e detalhados.
+    \item \textbf{Hunyuan 3D-DiT:} Enquanto o Hunyuan 3D-ShapeVAE gera os tokens correspondentes, outro fluxo analisa a imagem de entrada. Os dois fluxos comunicam-se por mecanismos de atenção, permitindo que a geração da malha considere detalhes e relações espaciais de forma integrada. Para garantir suavidade e fidelidade na reconstrução, aplica-se a técnica de \textit{flow-matching}, um método avançado de difusão \cite{parth2025}. Como resultado, o sistema produz uma malha tridimensional de alta qualidade em formato de \textit{wireframe}. A principal inovação do Hunyuan 3D 2.0 é sua capacidade de prever, de maneira inteligente, os lados ocultos do objeto, aumentando a consistência e o realismo do modelo gerado.
+    \item \textbf{Hunyuan 3D-Paint:} Nesta etapa, a malha gerada e a imagem de referência são usadas para criar o modelo texturizado final. O processo envolve limpeza da imagem, escolha de múltiplos ângulos de câmera, geração de vistas múltiplas usando o fluxo duplo da IA e aplicação dessas fotos sobre a malha (\textit{texture baking}). O modelo combina arquitetura de dupla transmissão, atenção multi-tarefa e processamento inteligente, garantindo consistência, alinhamento entre vistas e precisão geométrica \cite{parth2025}. O resultado é um modelo tridimensional texturizado de alta qualidade, pronto para uso em jogos, animações ou qualquer software 3D.
+\end{enumerate}
+
+A Figura~\ref{fig:Fig_17} ilustra essas etapas e a arquitetura do modelo, detalhando a comunicação entre os módulos e a geração final do modelo 3D texturizado.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_17}Pipeline e arquitetura do Hunyuan 3D 2.0.}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/arch.jpg}
+	\end{center}
+\end{figure}
+
+Posteriormente, o manual orienta sobre a instalação do modelo e a execução do \textit{workflow} no ComfyUI, incluindo a visualização da malha com textura gerada a partir da imagem produzida na etapa anterior, como ilustrado na Figura~\ref{fig:Fig_18}. Essa representação permite acompanhar de forma clara todas as etapas do processo, desde a análise da imagem de entrada e a geração da malha base pelos módulos ShapeVAE e DiT, até a síntese do mapa de textura final pelo módulo Paint. Além disso, facilita a compreensão da comunicação entre os módulos e do fluxo de dados, evidenciando como cada etapa contribui para a criação de um modelo 3D texturizado de alta qualidade.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_18}Exemplo de Hunyuan 3D 2.0 no ComfyUI}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/hunyuanWorkflow.png}
+	\end{center}
+\end{figure}
+
+% ----------------------------------------------------------
+\subsection{Hunyuan 3D 2.5}
+% ----------------------------------------------------------
+
+Em seguida, o manual apresenta o Hunyuan 3D 2.5, a versão mais recente do modelo desenvolvido pela Tencent, que segue a mesma arquitetura geral do Hunyuan 3D 2.0. Esta versão introduz um novo modelo de geração de formas \textit{lattice}, que é um modelo de difusão em larga escala capaz de produzir formas detalhadas e de alta fidelidade, com bordas nítidas e superfícies suaves, a partir de uma única imagem ou de quatro imagens em múltiplas vistas \cite{hunyuan25}. Treinado em um conjunto de dados 3D extenso e de alta qualidade, contendo objetos complexos, o modelo foi projetado para gerar detalhes excepcionais. Para garantir eficiência, são empregadas técnicas de orientação (\textit{guidance}) e destilação de passos (\textit{step distillation}), que reduzem o tempo de inferência \cite{hunyuan25}.
+
+Além disso, a geração de texturas do Hunyuan 3D 2.5 é baseada em um \textit{framework} que utiliza mapas normais e \textit{Color Correction Map} gerados pela malha 3D como condições geométricas, juntamente com uma imagem de referência como guia. O modelo produz mapas de materiais PBR de alta qualidade, com consistência entre diferentes vistas, garantindo texturas contínuas e realistas \cite{hunyuan25}, como mostrado na Figura~\ref{fig:Fig_19}.
+
+\newpage
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_19}Visão geral de geração de materiais no Hunyuan 3D 2.5}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.3\textheight, keepaspectratio]{images/hunyuan25.png}
+	\end{center}
+\end{figure}
+
+Em relação ao uso prático do Hunyuan 3D 2.5, atualmente a plataforma disponibiliza um limite diário de 20 gerações por usuário. A interface online permite executar funcionalidades de Image-to-3D, Text-to-3D, \textit{rigging} automático, o conjunto de aplicações 3D (\textit{3D Application Suite}) e a criação de modelos de mundo 3D (\textit{3D World Model}), oferecendo aos usuários formas de testar e explorar os recursos do modelo dentro dessas restrições.
+
+Para ilustrar o funcionamento do Image-to-3D, a Figura~\ref{fig:Fig_20} apresenta uma malha gerada a partir de uma imagem obtida na etapa anterior, utilizando o site oficial do Hunyuan 3D 2.5. É possível observar a geometria detalhada da malha, que preserva as características estruturais do objeto original.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_20}Exemplo de uso de Hunyuan 3D 2.5}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.27\textheight, keepaspectratio]{images/hunyuan25-site.png}
+	\end{center}
+\end{figure}
+
+\newpage
+% ----------------------------------------------------------
+\subsection{Meshy AI}
+% ----------------------------------------------------------
+
+O manual também apresenta o Meshy AI, um gerador de modelos 3D com inteligência artificial que auxilia artistas 3D, desenvolvedores de jogos, entusiastas de impressão 3D e criadores de protótipos em \textit{Extended Reality} (XR) a transformar textos e imagens em modelos 3D de alta qualidade. Conforme documentado no site oficial, o Meshy AI oferece recursos como Text-to-3D, Image-to-3D, Text-to-Texture e opções de animação, tudo isso com interface amigável para usuários com pouca experiência \cite{meshyai}.
+
+A plataforma é acessível diretamente pelo navegador e não requer instalação local, o que facilita seu uso. O plano gratuito oferece 200 créditos e 10 downloads por mês, sendo que cada geração consome 10 créditos.
+
+O manual prático também contém instruções de uso do Meshy AI, permitindo que o usuário experimente a geração de modelos 3D e compare seus resultados com aqueles obtidos via Hunyuan 3D, oferecendo mais opções e flexibilidade na criação de ativos tridimensionais. A Figura~\ref{fig:Fig_21} apresenta o resultado da malha 3D com textura gerada a partir do Meshy AI.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_21}Exemplo de uso de Meshy AI}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.3\textheight, keepaspectratio]{images/meshyAI.png}
+	\end{center}
+\end{figure}
+
+Essas opções permitem explorar diferentes fluxos de trabalho e resultados sem a necessidade de hardware avançado. Vale destacar que o Hunyuan 3D 2.0, quando executado localmente pelo ComfyUI, requer um computador equipado com placa de vídeo (GPU) com, no mínimo, 8GB de VRAM, além da configuração adequada do ambiente, o que pode restringir seu uso a usuários com maior capacidade técnica e recursos de hardware. Dessa forma, a inclusão de plataformas online serve para oferecer flexibilidade e acessibilidade na criação de modelos 3D.
+
+A Figura~\ref{fig:Fig_22} apresenta três personagens 3D geradas a partir da mesma imagem de entrada, obtida no processo de image-to-image com a obra "Maricota". As comparações entre os modelos evidenciam diferenças na qualidade da malha e das texturas:
+
+\begin{itemize}
+    \item \textbf{Hunyuan 3D 2.0:} apresenta pequenas falhas na textura, e as mãos da personagem aparecem coladas ao corpo.
+    \item \textbf{Hunyuan 3D 2.5:} gera malha com qualidade superior, com texturas mais detalhadas e mãos separadas, mantendo maior fidelidade à imagem de referência.
+    \item \textbf{Meshy AI:} produz uma malha de boa qualidade, porém a textura não reproduz fielmente a imagem de entrada.
+\end{itemize}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_22}Comparação do resultado entre 3 modelos}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.27\textheight, keepaspectratio]{images/comparacao.png}
+	\end{center}
+\end{figure}
+
+Essa comparação evidencia que cada ferramenta possui características distintas quanto à fidelidade das texturas, à qualidade da malha e ao nível de detalhamento, oferecendo ao usuário diferentes alternativas para a geração de modelos 3D.
+
+% ----------------------------------------------------------
+\subsection{Correção e Ajuste de Modelos 3D}
+% ----------------------------------------------------------
+
+Após a geração dos modelos 3D pela IA gerativa, o manual prático também aborda a necessidade de ajustes para corrigir imperfeições que podem ocorrer durante o processo, como, por exemplo, personagens gerados pelo Hunyuan 3D 2.0 com as mãos coladas ao corpo ou falhas nas texturas. Ou seja, os modelos podem apresentar problemas como geometria irregular, malhas interpenetradas ou texturas mal aplicadas. Para esses casos, o manual apresenta um guia detalhado de uso do Blender, permitindo que o usuário realize as correções necessárias e prepare os modelos para a aplicação do esqueleto de animação.
+
+Um dos problemas mais comuns é a malha colada, que pode ocorrer dependendo da IA gerativa utilizada e da imagem de entrada. Por exemplo, se a imagem do personagem apresenta partes do corpo próximas, como as mãos próximas ao tronco, a geração da geometria pode resultar em malhas coladas. O manual apresenta duas abordagens para corrigir esse problema:
+
+\begin{itemize}
+    \item \textbf{Deletar faces diretamente:} selecionar as faces a serem removidas e, em seguida, fechar os buracos criados, gerando novas faces para unir corretamente as partes separadas.
+    \item \textbf{Deletar usando Knife Bisset:} ferramenta do Blender que permite realizar cortes retos e precisos, ideal para regiões mais complexas.
+\end{itemize}
+
+A Figura~\ref{fig:Fig_23} apresenta um exemplo de malha colada gerada pela IA, mostrando como as partes do modelo podem ficar unidas incorretamente (à esquerda) e o resultado após a correção com as técnicas ensinadas no manual (à direita).
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_23}Exemplo de malha colada e malha corrigida no Blender}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.22\textheight, keepaspectratio]{images/correcao_malha.png}
+	\end{center}
+\end{figure}
+
+Outro problema comum são texturas incorretas ou incompletas. Para ajustá-las, o manual recomenda o Modo de Pintura de Textura, utilizando a ferramenta Besuntar (\textit{Smear}) para espalhar cores de forma natural e corrigir imperfeições. A Figura~\ref{fig:textura_cabeca} ilustra a textura da cabeça do personagem antes e após a correção. Após os ajustes, o UV Map deve ser salvo para preservar as modificações realizadas.
+
+\begin{figure}[htb]
+	\caption{\label{fig:textura_cabeca}Exemplo de textura incompleta e corrigida no Blender}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.18\textheight, keepaspectratio]{images/correcao_textura.png}
+	\end{center}
+\end{figure}
+
+
+Por fim, pode ser necessário ajustar o \textit{Shader}, que é o conjunto de propriedades que define como a superfície do modelo interage com a luz, determinando aparência como brilho, transparência, metalicidade e rugosidade. O manual detalha como configurar os parâmetros de material, comparando o visual do personagem antes e depois do ajuste (Figura~\ref{fig:shader_personagem}), garantindo um resultado final mais realista e coerente com a textura aplicada.
+
+\begin{figure}[htb]
+	\caption{\label{fig:shader_personagem}Exemplo de ajuste de Shader no Blender}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/correcao_shader.png}
+	\end{center}
+\end{figure}
+
+% ----------------------------------------------------------
+\section{Aplicação de Esqueletos e Animação}
+% ----------------------------------------------------------
+
+Após a geração e correção dos modelos 3D, o próximo passo detalhado no manual é a aplicação de esqueleto, chamado de \textit{rigging} e animação, que permite que os personagens realizem movimentos andar, correr, pular ou realizar acrobacias em ambiente virtual. Esta etapa pode ser realizada de forma manual, utilizando ferramentas como Blender, ou de maneira automática, por meio de plataformas online.
+
+No \textit{rigging} manual, o esqueleto é ajustado para coincidir com a malha do personagem, garantindo que ossos e vértices estejam corretamente alinhados. O processo envolve:
+
+\begin{itemize}
+    \item \textbf{Ajuste do Esqueleto:} alinhar corretamente à malha do personagem antes da vinculação. O objetivo é assegurar que a estrutura óssea corresponda à anatomia do modelo, evitando deformações incorretas durante a animação.
+    \item \textbf{Conexão com a malha:} associação da malha ao esqueleto, utilizando pesos de influência automáticos.
+    \item \textbf{Correção de influência de pesos:} quando a influência automática dos ossos sobre a malha não é aplicada de forma precisa, é necessário realizar ajustes manuais usando a ferramenta de pintura de pesos (\textit{Weight Painting}), como apresentado na Figura~\ref{fig:Fig_24}. Essa etapa corrige deformações incorretas durante a movimentação do personagem, garantindo que cada parte da malha responda adequadamente ao osso correspondente.
+    \item \textbf{Exportação:} salvamento do modelo \textit{rigged} no formato .fbx para uso na Unreal Engine.
+\end{itemize}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_24}Blender - pintura de pesos}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{images/esqueleto.png}
+	\end{center}
+\end{figure}
+
+Na aplicação automática, ferramentas como Mixamo permitem a criação rápida de esqueletos para personagens humanoides, oferecendo também animações pré-definidas. O Blender, por sua vez, disponibiliza recursos de auto-rigging através do add-on nativo Rigify, que gera rigs automaticamente a partir de um metarig posicionado sobre o modelo, possibilitando ajustes finos e maior controle sobre o esqueleto e a deformação da malha. Outras plataformas de IA, como Hunyuan 3D 2.5 e Meshy AI, permitem gerar modelos já com esqueleto e animação aplicados. Essa abordagem é mais prática e acessível, mas, por ser automática, pode não se adaptar perfeitamente a todos os modelos, especialmente em poses complexas ou em detalhes como mãos próximas ao corpo, podendo exigir correções manuais.
+
+% ----------------------------------------------------------
+\section{Criação de Jogo}
+% ----------------------------------------------------------
+
+A última etapa do manual aborda a criação de jogos 3D, um processo que integra modelagem, animação e programação. Para isso, utiliza-se a Unreal Engine 5, uma das ferramentas mais populares e poderosas da indústria para desenvolvimento de jogos tridimensionais, demonstrando como integrar modelos gerados por IA e aplicar a lógica de jogo interativa. O ambiente utilizado neste trabalho foi a Fortaleza de Anhatomirim, criado no Unreal Engine pelo professor de animação Flávio Andaló, que serviu como base para a construção do protótipo. Foram realizadas modificações, incluindo a alteração de texturas com ativos gerados por IA e adição de novas estruturas, adaptando o cenário aos objetivos do manual e do jogo desenvolvido.
+
+O processo inicia com a importação dos ativos, como malhas, esqueletos e animações em formato .fbx, e a configuração do personagem no \textit{Blueprint} principal do jogo. Em seguida, a animação é controlada dinamicamente por meio do \textit{Animation Blueprint} e das \textit{State Machines}, que definem transições entre estados como parado, correndo ou pulando, com base na velocidade e nas condições do personagem.
+
+Após a inserção de personagens e animações no ambiente, é necessário definir a lógica do jogo, que consiste no conjunto de regras, objetivos e interações que transformam os elementos visuais em um sistema jogável. No manual, a lógica apresentada é propositalmente simples, com o objetivo de demonstrar funcionalidades básicas da Unreal Engine 5, utilizando pontuação e desbloqueio de objetivos como exemplo:
+
+\begin{itemize}
+    \item \textbf{Objetivo Final:} O jogador deve alcançar 100 pontos para sair da ilha e vencer o jogo.
+    
+    \item \textbf{Sistema de Pontos:}
+    \begin{itemize}
+        \item Gema 1 → 1 ponto
+        \item Gema 2 → 2 pontos
+        \item Gema 3 → 100 pontos
+    \end{itemize}
+
+    \item \textbf{Restrições e Progressão:}
+    \begin{itemize}
+        \item A Gema 3 está escondida atrás de uma grade de madeira.
+        \item Para abrir a grade, o jogador precisa ativar duas plataformas.
+        \item Cada plataforma só pode ser ativada quando o jogador acumular pelo menos 20 pontos.
+    \end{itemize}
+\end{itemize}
+
+Essa estrutura demonstra como regras simples podem ser implementadas para controlar a progressão do jogador e as interações no ambiente de jogo, integrando ativos 3D gerados por IA, animações e colisores de maneira funcional.
+
+Para a criação de ativos, como gemas, plataformas e grades de madeira, foi utilizado o Hunyuan 3D 2.5 no modo text-to-3D, permitindo gerar elementos visuais a partir de descrições textuais. As Figuras~\ref{fig:Fig_25},~\ref{fig:Fig_26} e~\ref{fig:Fig_27} apresentam os ativos gerados, evidenciando a aplicabilidade da IA na produção de elementos visuais para o ambiente do jogo.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_25}Hunyuan 3D 2.5 - gemas}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/gemas.png}
+	\end{center}
+\end{figure}
+\vspace{-1em}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_26}Hunyuan 3D 2.5 - plataformas}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/plataforma.png}
+	\end{center}
+\end{figure}
+\vspace{-1em}
+
+\newpage
+
+\begin{figure}[htb]	
+	\caption{\label{fig:Fig_27}Hunyuan 3D 2.5 - grade de madeira}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.24\textheight, keepaspectratio]{images/gradeMadeira.png}
+	\end{center}
+\end{figure}
+
+
+A etapa seguinte trata da integração do ambiente e colisão, configurando objetos interativos, como gemas coletáveis, com colisores e eventos de sobreposição que detectam o jogador e atualizam a pontuação. Nessa etapa, foi criada uma classe \textit{Blueprint} do tipo \textit{Actor} para representar a gema coletável no cenário. O \textit{Blueprint} recebeu uma malha estática (a representação visual da gema) e um componente de colisão do tipo \textit{Capsule Collision}, escolhido por se ajustar melhor ao formato do modelo 3D. A malha teve sua predefinição de colisão alterada de “\textit{Block All Dynamic}” para “\textit{No Collision}”, permitindo que o personagem atravesse o objeto. Já a cápsula de colisão permaneceu ativa para detectar a sobreposição (\textit{overlap}) com o personagem.
+
+A lógica de coleta foi implementada no \textit{Event Graph} do \textit{Blueprint}. Nesse gráfico, o evento de sobreposição foi configurado para verificar se o ator que entrou em contato é o personagem jogável. Quando isso ocorre, o sistema executa duas ações principais: incrementa a pontuação do jogador de acordo com o tipo da gema coletada e, em seguida, remove a gema da cena utilizando o nó \textit{Destroy Actor}. A Figura~\ref{fig:Fig_28} apresenta o \textit{Event Graph} configurado para o \textit{Blueprint} da gema, destacando os nós responsáveis pela detecção da colisão, atualização da pontuação e destruição do ator.
+
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_28}Unreal Engine 5 - Blueprint de gemas}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.19\textheight, keepaspectratio]{images/bp_gemas.png}
+	\end{center}
+\end{figure}
+
+Após a implementação do sistema de coleta e pontuação, foi criada uma interface para exibir, em tempo real, a pontuação atual do jogador. O manual apresenta o uso de um \textit{Blueprint} do tipo \textit{Widget}, responsável por definir os elementos visuais da interface gráfica. Dentro do \textit{Widget Blueprint}, é adicionado um componente de texto que será responsável por exibir o valor da pontuação. Esse componente é configurado com uma vinculação (\textit{Bind}) à variável de pontuação armazenada no \textit{Blueprint} do jogador. Assim, a cada atualização dessa variável, por exemplo, quando o jogador coleta uma gema, o texto do \textit{Widget} é automaticamente atualizado, exibindo o valor correto na tela. Por fim, o \textit{Widget} é adicionado à tela do jogador por meio do nó \textit{Add to Viewport}, dentro do \textit{Event Graph} do \textit{Blueprint} do jogador, garantindo que a interface seja renderizada continuamente durante a execução do jogo.
+
+A próxima etapa aborda a interação entre o jogador e os elementos do ambiente, como as plataformas de ativação e a grade de madeira que bloqueia o acesso à gema final. Cada plataforma pode ser ativada somente quando o jogador acumula pelo menos 20 pontos. No \textit{Event Graph} da plataforma, um nó \textit{Branch} realiza a verificação da pontuação atual. Caso a condição seja satisfeita, o sistema executa uma sequência de ações:
+
+\begin{enumerate}
+    \item Ativa um efeito visual utilizando o sistema \textit{Niagara}, simulando energia ou brilho para indicar que a plataforma foi acionada;
+    \item Decrementa 20 pontos da pontuação total do jogador, representando o custo da ativação;
+    \item Desabilita a colisão da plataforma, impedindo que o jogador a reative;
+    \item Define a variável booleana \textit{AtivadoPlataforma} como \textit{true}, indicando que a plataforma correspondente já foi acionada.
+    \item Chama a função da grade de madeira responsável por verificar se ambas as plataformas foram ativadas, liberando a gema final caso a condição seja satisfeita.
+\end{enumerate}
+
+O sistema \textit{Niagara} é utilizado para criar efeitos visuais dinâmicos e responsivos dentro da Unreal Engine 5, permitindo adicionar partículas, luzes e movimentos que reforçam visualmente as ações do jogador. Nesse contexto, sua aplicação aumenta a imersão e fornece um retorno visual imediato quando uma plataforma é ativada. A Figura~\ref{fig:Fig_29} apresenta o \textit{Event Graph} do \textit{Blueprint} da plataforma.
+
+\newpage
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_29}Unreal Engine 5 - Blueprint de plataforma}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/blueprint.png}
+	\end{center}
+\end{figure}
+
+A grade de madeira é configurada para se destruir automaticamente após a ativação das duas plataformas. O \textit{Blueprint} responsável pela grade contém referências diretas aos atores correspondentes às plataformas, permitindo monitorar o estado de cada uma. Uma função personalizada realiza a verificação das variáveis booleanas \textit{AtivadoPlataforma1} e \textit{AtivadoPlataforma2}. Quando ambas são verdadeiras, o sistema executa o comando \textit{Destroy Actor}, removendo a grade de madeira e liberando o caminho para que o jogador alcance a gema de maior valor. A Figura~\ref{fig:Fig_30} ilustra a função de verificação implementada na grade de madeira, responsável por controlar sua destruição condicional.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_30}Unreal Engine 5 - Blueprint de grade de madeira (função de verificação)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/bp_madeira.png}
+	\end{center}
+\end{figure}
+
+Dessa forma, os \textit{Blueprints} transformam os ativos visuais gerados por IA em um sistema jogável completo, integrando colisões, efeitos visuais, pontuação, progressão e interface de usuário de forma organizada e visualmente compreensível. Essa abordagem facilita testes, ajustes e manutenção, pois todas as regras e interações podem ser visualizadas como fluxos conectados de nós, tornando o processo mais intuitivo para desenvolvedores iniciantes ou designers sem experiência em programação. 
+
+Os últimos capítulos do manual apresentam os recursos visuais que aprimoram a imersão. O uso da ferramenta \textit{Foliage Tool} permite adicionar vegetação, pedras e outros elementos de cenário de forma ágil. Além da rapidez, a ferramenta possibilita ajustar parâmetros como densidade, escala, rotação e alinhamento ao terreno, garantindo variações que tornam o ambiente mais realista. Essa abordagem é especialmente útil para criar florestas, jardins ou terrenos complexos sem exigir grande esforço manual, permitindo que designers e desenvolvedores foquem na composição estética e na jogabilidade.
+
+Além disso, o manual detalha o processo de criação de \textit{materials}, permitindo configurar a aparência e as propriedades de superfície dos objetos. Por meio do editor de materiais da Unreal Engine, é possível definir cor, rugosidade, reflexão e comportamento metálico, garantindo que elementos como pedras, madeira ou superfícies metálicas respondam à iluminação de forma realista. O manual também apresenta técnicas avançadas para aplicação de texturas realistas, permitindo criar superfícies mais naturais e detalhadas:
+
+\begin{itemize}
+    \item \textbf{Tiling (Repetição):} técnica que ajusta quantas vezes uma textura é repetida sobre uma malha 3D. É especialmente útil em superfícies grandes, evitando que a textura pareça esticada ou distorcida. Por exemplo, uma parede de tijolos pode repetir a textura várias vezes para manter o padrão consistente.
+    \item \textbf{Texture Bombing:} consiste em projetar a mesma textura diversas vezes, aplicando variações aleatórias de posição, rotação e escala. Essa técnica quebra o padrão de repetição visível, criando um efeito mais orgânico e natural, como se cada elemento da textura fosse ligeiramente diferente do outro. A Figura~\ref{fig:Fig_31} apresenta uma comparação entre o uso de tiling e texture bombing, evidenciando como cada técnica altera a percepção visual da superfície.
+    \item \textbf{Mesclagem de Texturas (Texture Blending):} utiliza o nó Lerp (\textit{Linear Interpolate}), junto a uma máscara em Alpha, para combinar duas texturas diferentes de forma precisa. Isso permite, por exemplo, aplicar musgo sobre um material de tijolo ou areia sobre uma pedra, garantindo que a transição entre texturas seja suave e controlada. A Figura~\ref{fig:Fig_32} mostra um exemplo prático de mesclagem de texturas, destacando a transição gradual entre materiais distintos.
+\end{itemize}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_31}Unreal Engine 5 - Comparação entre tiling e bombing}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/materials.png}
+	\end{center}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_32}Unreal Engine 5 - Mesclagem de Textura}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/mesclagem.png}
+	\end{center}
+\end{figure}
+
+
+Essas técnicas, detalhadas no manual, são fundamentais para aprimorar a qualidade visual dos ambientes e objetos em jogos, tornando-os mais realistas e imersivos. As etapas demonstram como a Unreal Engine 5 integra, de forma eficiente, ativos 3D gerados por IA, animações e lógica de jogo, resultando em um ambiente interativo e visualmente consistente.
+
+Para ilustrar os resultados obtidos, as Figuras~\ref{fig:Fig_33},~\ref{fig:Fig_34},~\ref{fig:Fig_35},~\ref{fig:Fig_36},~\ref{fig:Fig_37} e~\ref{fig:Fig_38} apresentam capturas de tela do jogo desenvolvido a partir do manual proposto, que utilizou como base o projeto do professor Flávio. As imagens exibem o personagem principal, o cenário e a integração dos elementos criados com o uso de ferramentas de IA gerativa, evidenciando a aplicação prática das técnicas apresentadas. A Figura~\ref{fig:Fig_35}, que representa a casa da comandante, foi inteiramente criada e adicionada ao ambiente, enquanto os demais elementos tiveram apenas suas texturas substituídas por versões geradas por IA gerativa. A única exceção é a igreja (Figura~\ref{fig:Fig_36}), que manteve sua estrutura e textura originais. 
+
+O projeto completo do jogo desenvolvido na Unreal Engine 5 está disponível para consulta e download no Apêndice C.
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_33}Personagem inspirada em Maricota}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/maricota_ue.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_34}Ambiente do jogo - Fortaleza de Anhatomirim portada}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/entrada.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_35}Ambiente do jogo - Fortaleza de Anhatomirim casa do comandante}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/casa_comandante.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_36}Ambiente do jogo - Fortaleza de Anhatomirim igreja}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/igreja.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_37}Ambiente do jogo - Fortaleza de Anhatomirim ponta do quartel}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/quartel.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:Fig_38}Ambiente do jogo - Fortaleza de Anhatomirim na ponta}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/ponta.png}
+	\end{center}
+\end{figure}

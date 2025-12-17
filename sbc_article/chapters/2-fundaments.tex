@@ -1,0 +1,21 @@
+\section{Fundamentação Teórica e Ferramentas Utilizadas}
+O presente estudo utiliza o Stable Diffusion, um modelo de difusão latente, que permite gerar imagens de alta qualidade a partir de descrições textuais ou imagens de referência. Os modelos de difusão operam adicionando ruído progressivamente a uma imagem e, em seguida, removendo-o iterativamente, o que possibilita a criação de conteúdos visuais detalhados e controláveis. Eles são considerados uma classe de modelos de \ac{ia} gerativa capazes de gerar imagens de alta qualidade, ao contrário de outros modelos, como \ac{gan} e \ac{vae}, que apresentam dificuldades para produzir imagens detalhadas em alta resolução \cite{ahirwar2023}.
+
+Para a geração de imagens e a criação de referências para modelos \ac{3d}, foram aplicadas técnicas como:  
+\begin{itemize}
+    \item \textbf{Text-to-Image}: geração de imagens a partir de \textit{prompts} textuais.
+    \item \textbf{Image-to-Image}: transformação de uma imagem inicial guiada por prompt textual, mantendo a estrutura da imagem original.
+    \item \textbf{Inpainting}: modificação localizada de imagens, permitindo apagar ou substituir partes específicas.
+    \item \textbf{ControlNet}: adição de controles estruturais, como esboços ou poses, para guiar a geração.
+    \item \textbf{\ac{lora}}: adaptação de modelos de grande escala para estilos específicos, com menor custo computacional.
+\end{itemize}
+
+\vspace{0.3cm}
+
+Para manipular o Stable Diffusion de forma prática, foram utilizadas duas interfaces gráficas:  
+\begin{itemize}
+    \item \textbf{Automatic1111}: interface popular, intuitiva e com amplo suporte a extensões, adequada para experimentação geral.
+    \item \textbf{ComfyUI}: interface baseada em nós, que permite maior controle sobre cada etapa do fluxo de geração, sendo eficiente para criar mapas de texturas e ativos \ac{3d} complexos, com ganho de performance em workflows mais avançados.
+\end{itemize}
+
+Nos últimos anos surgiram também ferramentas voltadas diretamente para modelagem \ac{3d} baseada em \ac{ia}, como Meshy AI e Hunyuan \ac{3d}, que permitem gerar malhas \ac{3d} a partir de imagens ou descrições textuais. Neste estudo, essas ferramentas foram utilizadas para apoiar a criação de modelos tridimensionais dentro do fluxo de produção de jogos digitais, permitindo a geração e o ajuste de ativos \ac{3d} de forma prática e ágil.

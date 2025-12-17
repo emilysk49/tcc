@@ -1,0 +1,81 @@
+\section{Metodologia e Desenvolvimento}
+
+Este estudo propôs um fluxo de trabalho para utilização de IA gerativa na criação de ativos 3D para jogos digitais, consolidado em um manual prático que abrange desde a configuração do ambiente até a integração dos ativos no protótipo de jogo. O manual detalha a instalação e configuração do Stable Diffusion, utilizando as interfaces Automatic1111 e ComfyUI, destacando suas principais diferenças em termos de usabilidade e desempenho.
+
+\subsection{Geração de imagens}
+
+Na etapa de geração de imagens, o manual detalha os parâmetros mais importantes que influenciam o resultado final, como número de steps, \ac{cfg} \textit{scale}, tamanho da imagem, \textit{denoise strength} e escolha de modelos. São fornecidos exemplos visuais comparativos para demonstrar como cada parâmetro altera o resultado. O manual também indica em cada interface onde esses parâmetros podem ser ajustados, oferecendo maior controle e precisão sobre a geração de imagens. 
+
+Além disso, são fornecidos fluxos de trabalho para geração de mapas de texturas \ac{pbr}, essenciais para materiais 3D realistas, permitindo que o usuário reproduza a criação de texturas consistentes com os modelos gerados.  
+
+Para ComfyUI, todos esses fluxos estão disponibilizados em arquivos JSON, correspondentes a cada técnica, garantindo que o usuário possa reproduzir exatamente os processos demonstrados no manual. A Figura~\ref{fig:workflow_comfyui} apresenta um exemplo do workflow de Image-to-Image no ComfyUI, evidenciando o encadeamento de nós e configurações utilizadas para gerar imagens refinadas a partir de referências existentes.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.83\columnwidth, keepaspectratio]{images/workflow-exp.jpg}
+    \caption{Workflow de técnica image-to-image. Fonte: autoria própria}
+    \label{fig:workflow_comfyui}
+\end{figure}
+
+\subsection{Geração de modelos 3D}
+
+As imagens geradas na etapa anterior serviram como base para a criação de modelos 3D, realizada com ferramentas de Image-to-3D — Hunyuan 3D 2.0, Hunyuan 3D 2.5 e Meshy AI. No manual foca especialmente no Hunyuan 3D 2.0, desenvolvido pela Tencent, por permitir a execução local sem limites de uso. Esta ferramenta possibilita criar malhas 3D otimizadas e gerar mapas de textura realistas a partir de uma única imagem 2D. Segundo o artigo publicado pela \textit{Towards Deep Learning}, o Hunyuan 3D 2.0 representa um avanço significativo ao democratizar uma tecnologia antes acessível apenas a profissionais especializados, oferecendo aplicabilidade prática para áreas como jogos, cinema, animação e impressão 3D, além de reduzir custos na produção de ativos 3D.
+
+O fluxo de trabalho utilizado para gerar modelos 3D a partir de uma imagem com o Hunyuan 3D 2.0 é ilustrado na Figura~\ref{fig:workflow_hunyuan}. Este workflow demonstra as etapas principais, desde a importação da imagem gerada pela IA até a produção do modelo 3D final, incluindo ajustes manuais quando necessários para correção de topologia, geometria ou texturas.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.83\columnwidth, keepaspectratio]{images/hunyuanWorkflow.png}
+    \caption{Workflow de geração de modelo 3D a partir de imagem utilizando Hunyuan 3D 2.0. Fonte: autoria própria}
+    \label{fig:workflow_hunyuan}
+\end{figure}
+
+Embora todas as ferramentas permitam gerar modelos 3D a partir de imagens, foi identificada variação na qualidade final, especialmente em topologia, fidelidade da textura e precisão estrutural. Essas diferenças podem exigir ajustes manuais no Blender para garantir geometria, topologia e texturização adequadas. Os principais problemas identificados e suas soluções estão resumidos na Tabela~\ref{tab:correcao3d_simples}.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{p{6cm} p{7cm}}
+\hline
+\textbf{Problema} & \textbf{Correção / Solução} \\
+\hline
+Malha colada & Ajuste manual no Blender (Knife bisset ou deletar face diretamente) \\
+Texturas incorretas ou incompletas & Aplicação e correção manual de texturas, retoque visual no Blender\\
+Shader mal configurado & Ajuste de parâmetros de Shader no Blender \\
+\hline
+\end{tabular}
+\caption{Principais problemas em modelos 3D gerados por IA e correções aplicadas. Fonte: autoria própria}
+\label{tab:correcao3d_simples}
+\end{table}
+
+\subsection{Aplicação de Esqueleto}
+
+Posteriormente, os modelos 3D passam pela etapa de aplicação de esqueleto (\textit{rigging}), essencial para possibilitar animações e a integração no protótipo de jogo na Unreal Engine 5. O manual aborda duas abordagens principais para rigging:
+
+
+O rigging manual exige precisão no alinhamento do esqueleto com a malha do personagem, garantindo que os ossos e vértices estejam corretamente associados e prevenindo deformações durante a animação. O processo envolve:
+\begin{itemize}
+    \item \textbf{Ajuste do Esqueleto:} o esqueleto é posicionado de acordo com a anatomia do modelo.
+    \item \textbf{Conexão com a Malha:} associação da malha ao esqueleto, geralmente com pesos automáticos de influência.
+    \item \textbf{Correção de Influência de Pesos (\textit{Weight Painting}):} ajustes manuais quando a associação automática não é precisa, utilizando a ferramenta de pintura de pesos no Blender.
+    \item \textbf{Exportação:} o modelo rigged é exportado no formato \texttt{.fbx} para utilização na Unreal Engine 5.
+\end{itemize}
+
+\vspace{0.3cm}
+
+O rigging automático proporciona maior agilidade, mas ainda pode exigir ajustes manuais, especialmente dependendo da topologia da malha, que pode impedir a identificação correta de membros e a aplicação automática do esqueleto:
+\begin{itemize}
+    \item \textbf{Plataformas de IA:} Hunyuan 3D 2.5 e Meshy AI permitem gerar modelos 3D já com esqueleto aplicado.
+    \item \textbf{Blender Rigify:} \textit{add-on} que realiza \textit{auto-rigging} a partir de um metarig, permitindo ajustes finos.
+    \item \textbf{Mixamo:} ferramenta online para criação rápida de esqueletos humanoides com animações pré-definidas.
+\end{itemize}
+
+\subsection{Criação de Jogo}
+
+% no resultado
+% O protótipo utiliza como cenário a Fortaleza de Anhatomirim, adaptada para o jogo com elementos adicionais e substituição de texturas por versões geradas por IA. Ativos como gemas, plataformas e grades de madeira foram criados com o Hunyuan 3D 2.5 via Image-to-3D, demonstrando a viabilidade de gerar objetos jogáveis com auxílio de IA. A fase de rigging e animação prévia permitiu que os modelos importados no formato \texttt{.fbx} pudessem ser animados no ambiente do jogo, com controle de estados como parado, correndo ou pulando.
+
+O protótipo desenvolvido integrou os modelos 3D gerados por IA em um ambiente interativo na Unreal Engine 5, demonstrando a aplicação prática dos ativos digitais. O sistema de regras e interações foi implementado utilizando \textit{Blueprints}, com o objetivo de apresentar a funcionalidade dos modelos em um contexto de jogo.
+
+A mecânica principal consiste na coleta de gemas para acumular pontos, sendo que gemas menores contribuem com pontuações parciais, enquanto a gema final vale 100 pontos. O acesso à gema de maior valor é condicionado à ativação de duas plataformas interativas, que reduzem a pontuação do jogador como custo de progressão. Uma vez que ambas as plataformas são ativadas, a barreira que bloqueia a gema final é removida, permitindo que o jogador conclua o objetivo do jogo.
+
+Para aumentar a imersão, foram aplicadas técnicas de texturização avançada e inserção de elementos de cenário, como vegetação e objetos adicionais, utilizando ferramentas como \textit{Foliage Tool}, \textit{tiling}, \textit{texture bombing} e \textit{blending}.  
