@@ -20,6 +20,13 @@ pela Universidade Federal de Santa Catarina.
 Este trabalho investiga a aplicação de Inteligência Artificial gerativa, em especial o Stable Diffusion, na modelagem 3D e sua integração no contexto de jogos.
 O foco é a criação de um manual prático que demonstra o uso da IA tanto para a geração de conceitos visuais quanto para a criação de malhas e texturas tridimensionais, visando agilizar e tornar o processo de modelagem mais acessível.
 
+## Geração de modelo 3D
+![geracao 3d](imagens/processo-geracao.png)
+
+Mais detalhes sobre a geração de modelos 3D e os workflows utilizados estão disponíveis no:
+- 📘 **Manual prático:** [Acessar manual](https://www.researchgate.net/publication/396709256_MANUAL_DE_IA_GERATIVA_PARA_MODELAGEM_DE_PERSONAGEM_3D_-_GENERATIVE_AI_MANUAL_FOR_3D_CHARACTER_MODELLING)
+- 💻 **Repositório GitHub (workflows):** [Acessar GitHub](https://github.com/emilysk49/ComfyUI-3D.git)
+
 ## 🎮 Lógica do Jogo
 ![Logica do jogo](imagens/logica_jogo.png)
 
